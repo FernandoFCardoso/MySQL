@@ -13,26 +13,26 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-@Entity
+@Entity //Cria uma entidade ex: Entidade tb_postagem, um precisa do outro
 @Table(name = "tb_postagens")
 public class Postagem {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY )
-	private long id;
+	@Id //Serve para falar que o atributo é chave = primary key
+	@GeneratedValue(strategy = GenerationType.IDENTITY ) // indica o auto incremento (strategy) indentity indica sequencia numerica
+	private long id; // declaração, long = int; seria tipo o bigint
 	
-	@NotNull(message = "O atributo título é obrigatório!")
+	@NotNull(message = "O atributo título é obrigatório!")// se fizer um texto sem nada aparece isso
 	@Size(min = 5 , max = 100, message = "O atributo título deve conter no mínimo 5 e no máximo 100!")
-	private String titulo;
+	private String titulo; //size = tamanho
 	@NotNull(message = "O atributo título é obrigatório!")
 	@Size(min = 10 , max = 1000, message = "O atributo título deve conter no mínimo 10 e no máximo 1000!")
 	private String texto;
 	
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date data = new java.sql.Date(System.currentTimeMillis());
+	@Temporal(TemporalType.TIMESTAMP) // é como se fosse o date, avisa ao receber a data
+	private Date data = new java.sql.Date(System.currentTimeMillis()); // esse java.sql.Date já puxa do sistema a data.
 	
 	public long getId() {
-		return id;
+		return id; 
 	}
 	public void setId(long id) {
 		this.id = id;
