@@ -7,11 +7,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity //Cria uma entidade ex: Entidade tb_postagem, um precisa do outro
 @Table(name = "tb_postagens")
@@ -30,6 +33,12 @@ public class Postagem {
 	
 	@Temporal(TemporalType.TIMESTAMP) // é como se fosse o date, avisa ao receber a data
 	private Date data = new java.sql.Date(System.currentTimeMillis()); // esse java.sql.Date já puxa do sistema a data.
+	
+	
+	@ManyToOne 
+	@JsonIgnoreProperties("postagem") 
+	private Tema tema;
+	
 	
 	public long getId() {
 		return id; 
@@ -55,6 +64,11 @@ public class Postagem {
 	public void setData(Date data) {
 		this.data = data;
 	}
-	
+	public Tema getTema() {
+		return tema;
+	}
+	public void setTema(Tema tema) {
+		this.tema = tema;
+	}
 	
 }
