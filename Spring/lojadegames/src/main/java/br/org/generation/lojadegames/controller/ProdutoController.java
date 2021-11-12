@@ -36,10 +36,10 @@ public class ProdutoController {
 		
 	}
 	
-	@GetMapping("/{id}")
+	@GetMapping("/{id}")// Serve para ex: quando fizer o /1 aparecer o id 1
 	public ResponseEntity<Produto> getById(@PathVariable long id){
 		return produtoRepository.findById(id)
-			.map(resp-> ResponseEntity.ok(resp))
+			.map(resp-> ResponseEntity.ok(resp))// equivale ao optional, recebe a resposta do find by id
 			.orElse(ResponseEntity.notFound().build());
 	}
 	

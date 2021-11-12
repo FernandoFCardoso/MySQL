@@ -31,7 +31,7 @@ public class Produto {
 	
 	private int quantidade;
 	
-	@JsonFormat(shape = JsonFormat.Shape.STRING)
+	@JsonFormat(shape = JsonFormat.Shape.STRING)//para colocar os decimais em texto, exatamente como esta no banco de dados
 	@NotNull(message = "Preço é obrigatório!")
 	@Positive(message = "O preço deve ser maior do que zero!")
 	private BigDecimal preco;
